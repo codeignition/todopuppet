@@ -34,6 +34,12 @@ class java {
     owner   => root,
     mode    => '0755',
     source  => 'puppet:///modules/tomcat/set_java_home.sh',
-    require => Package['oracle-java8-installer']
+    require => Package['oracle-java8-installer'],
+  }
+
+  file { '/usr/lib/jvm/default-java':
+    ensure => 'link',
+    target => '/usr/lib/jvm/java-8-oracle',
+    require => Package['oracle-java8-installer'],
   }
 }
