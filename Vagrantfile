@@ -44,12 +44,12 @@ Vagrant.configure(2) do |config|
     node.vm.network :private_network, ip: "10.0.0.30"
 
     node.vm.provision "shell", inline: <<-SHELL
-      #sudo echo "10.0.0.10 puppet" >> /etc/hosts
-      #sudo echo "10.0.0.10 agent" >> /etc/hosts
-      #wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
-      #sudo echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list
-      #sudo apt-get update
-      #sudo apt-get install jenkins -y
+      sudo echo "10.0.0.10 puppet" >> /etc/hosts
+      sudo echo "10.0.0.10 agent" >> /etc/hosts
+      wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+      sudo echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list
+      sudo apt-get update
+      sudo apt-get install jenkins -y
       sudo su - jenkins -c "wget http://updates.jenkins-ci.org/update-center.json -qO- | sed '1d;$d'  > /var/lib/jenkins/updates/default.json"
       sudo service jenkins start
       sleep 20
