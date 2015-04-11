@@ -4,4 +4,5 @@ node basenode {
 
 node agent inherits basenode {
   include tomcat
+  include mongodb
 }
